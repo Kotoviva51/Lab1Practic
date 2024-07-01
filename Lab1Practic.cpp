@@ -445,3 +445,32 @@ getch();
 
 return ;
 }
+
+void stdat(struct z*kino, int NC)// ‘ункци€ дл€ сравнени€ сезонов и вы€влени€ из одной страны кинопроизведенени€
+{
+int i, k, flag=0;
+Console::ForegroundColor=ConsoleColor::Black;
+Console::BackgroundColor=ConsoleColor::Cyan;
+Console::CursorLeft=10;
+Console::CursorTop=17;
+for (k=0; k<NC; k++)
+{
+for (i=k+1; i<NC; i++)
+{
+if(strcmp(kino[i].city, kino[k].city)==0 && (kino[i].kolvo ==
+kino[k].kolvo))
+{
+flag=1;
+Console::CursorLeft=10;
+printf("  инопроизведени€ '%s' и '%s' из страны '%s' имеют по %d сезонов\n",kino[i].nazvanie, kino[k].nazvanie, kino[i].city,kino[i].kolvo);
+Console::CursorTop+=1;
+
+}
+}
+break;}
+if (!flag)
+{
+printf(" —овпадений не найдено!");
+}
+getch();
+}
